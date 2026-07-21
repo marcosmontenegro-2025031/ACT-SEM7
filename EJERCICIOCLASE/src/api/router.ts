@@ -6,17 +6,35 @@ export function router(
 ): void {
 
     const metodo = request.method;
-    const url = request.url;
+    const ruta = request.url;
 
-    response.writeHead(200, {
-        "Content-Type": "application/json"
-    });
+    response.setHeader("Content-Type", "application/json");
 
-    response.end(
-        JSON.stringify({
-            mensaje: "Router funcionando correctamente",
-            metodo: metodo,
-            url: url
-        })
-    );
+    if (metodo === "GET" && ruta === "/productos") {
+
+        response.writeHead(200);
+
+        response.end(JSON.stringify({
+            mensaje: "Ruta de productos funcionando"
+        }));
+
+        return;
+    }
+
+    if (metodo === "GET" && ruta === "/clientes") {
+
+        response.writeHead(200);
+
+        response.end(JSON.stringify({
+            mensaje: "Ruta de clientes funcionando"
+        }));
+
+        return;
+    }
+
+    response.writeHead(404);
+
+    response.end(JSON.stringify({
+        error: "Ruta no encontrada"
+    }));
 }
