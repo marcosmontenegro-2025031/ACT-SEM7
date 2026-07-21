@@ -3,10 +3,28 @@ import { router } from "./router";
 
 const PORT = 3000;
 
-const server = http.createServer((request, response) => {
-    router(request, response);
+const servidor = http.createServer((req,res)=>{
+
+    res.setHeader(
+        "Content-Type",
+        "application/json"
+    );
+
+    const respuesta = router(req,res);
+
+    if(!respuesta){
+
+        res.writeHead(404,{
+            "Content-Type":"application/json"
+        });
+
+        res.end(JSON.stringify({
+            mensaje:"Ruta no encontrada"
+        }));
+    }
+
 });
 
-server.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en el puerto ${PORT}`);
+servidor.listen(PORT,()=>{
+    console.log(`Servidor iniciado en puerto ${PORT}`);
 });
