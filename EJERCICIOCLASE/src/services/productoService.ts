@@ -1,5 +1,5 @@
 import { Producto } from "../models/producto";
-import { agregarProducto, actualizarProducto, eliminarProducto, listarProductos, obtenerProducto } from "../client/productoClient";
+import { agregarProducto, actualizarProducto, eliminarProducto, listarProductos, obtenerProducto } from "../client/producto";
 
 export async function obtenerProductos(): Promise<void> {
     try {
