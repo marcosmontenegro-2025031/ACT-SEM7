@@ -1,0 +1,11 @@
+import { EstadoCliente } from "../models/estadoCliente";
+
+export interface Cliente {
+    id:number;
+    nombre:string;
+    apellido:string;
+    correo:string;
+    telefono:string;
+    direccion:string;
+    estado:EstadoCliente;
+}
